@@ -8,8 +8,19 @@ import '../styles/auth.scss';
 
 import Button from '../components/Button';
 
+import { auth, firebase } from '../services/firebase';
+
 export default function Home() {
   const navigate = useNavigate();
+
+  function handleCreateNewRoom() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider).then((result) => {
+      console.log(result)
+      navigate('rooms/new');
+    });
+  }
 
   return (
     <div id="page-auth">
@@ -23,7 +34,7 @@ export default function Home() {
           <img src={logoImg} alt="Letmeask logo" />
           <button
             className="create-room"
-            onClick={ () => navigate('/rooms/new')}
+            onClick={ handleCreateNewRoom }
           >
               <img src={googleIcon} alt="Google Icon" />
               Crie sua sala com google
