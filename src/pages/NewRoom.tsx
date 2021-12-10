@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import illustrationSvg from '../assets/images/illustration.svg';
