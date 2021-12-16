@@ -1,7 +1,22 @@
+import { FC } from 'react';
 
-function App() {
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import { Home } from './pages/Home';
+import { NewRoom } from './pages/NewRoom';
+
+import { AuthContextProvider } from './context/AuthContextProvider';
+
+export const App: FC = () => {
   return (
-    <h1>Hello World!</h1>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/rooms/new" element={ <NewRoom /> } />
+          <Route path="/" element={ <Home /> } />
+        </Routes>
+      </AuthContextProvider>
+    </BrowserRouter>
   );
 }
 

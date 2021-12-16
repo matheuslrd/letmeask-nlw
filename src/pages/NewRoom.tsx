@@ -1,10 +1,9 @@
 import { FC } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import illustrationSvg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
-import googleIcon from '../assets/images/google-icon.svg';
 
 import '../styles/auth.scss';
 
@@ -12,17 +11,8 @@ import { Button } from '../components/Button';
 
 import { useAuth } from '../hooks/useAuth';
 
-export const Home: FC = () => {
-  const navigate = useNavigate();
-  const { signInWithGoogle, user } = useAuth();
-
-  async function handleCreateNewRoom() {
-    if(!user) {
-      await signInWithGoogle();
-    }
-
-    navigate('rooms/new');
-  }
+export const NewRoom: FC = () => {
+  const { user } = useAuth();
 
   return (
     <div id="page-auth">
@@ -34,25 +24,23 @@ export const Home: FC = () => {
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask logo" />
-          <button
-            className="create-room"
-            onClick={ handleCreateNewRoom }
-          >
-              <img src={googleIcon} alt="Google Icon" />
-              Crie sua sala com google
-          </button>
-          <div className="separator">
-            ou entre em uma sala
-          </div>
+          <h1>{user?.name}</h1>
+          <h2>Criar uma nova sala</h2>
           <form>
             <input
               type="text"
-              placeholder="Digite o código da sala"  
+              placeholder="Nome da sala"  
             />
             <Button type="submit">
-              Entrar na sala
+              Criar sala
             </Button>
           </form>
+          <p>
+            Quer entrar em uma sala existente?
+            <Link to="/">
+              Clique aqui.
+            </Link>
+          </p>
         </div>
       </main>
     </div>
