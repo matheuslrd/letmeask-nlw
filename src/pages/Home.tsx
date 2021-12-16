@@ -10,19 +10,11 @@ import '../styles/auth.scss';
 
 import { Button } from '../components/Button';
 
-import { auth, firebase } from '../services/firebase';
-
-
 export const Home: FC = () => {
   const navigate = useNavigate();
 
   function handleCreateNewRoom() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    auth.signInWithPopup(provider).then((result) => {
-      console.log(result)
-      navigate('rooms/new');
-    });
+    navigate('rooms/new');
   }
 
   return (
