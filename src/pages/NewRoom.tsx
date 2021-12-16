@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -7,9 +7,9 @@ import logoImg from '../assets/images/logo.svg';
 
 import '../styles/auth.scss';
 
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 
-export default function NewRoom() {
+export const NewRoom: FC = () => {
   return (
     <div id="page-auth">
       <aside>

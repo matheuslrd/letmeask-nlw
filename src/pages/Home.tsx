@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -8,11 +8,12 @@ import googleIcon from '../assets/images/google-icon.svg';
 
 import '../styles/auth.scss';
 
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 
 import { auth, firebase } from '../services/firebase';
 
-export default function Home() {
+
+export const Home: FC = () => {
   const navigate = useNavigate();
 
   function handleCreateNewRoom() {
