@@ -10,10 +10,17 @@ import '../styles/auth.scss';
 
 import { Button } from '../components/Button';
 
+import { useAuth } from '../hooks/useAuth';
+
 export const Home: FC = () => {
   const navigate = useNavigate();
+  const { signInWithGoogle, user } = useAuth();
 
-  function handleCreateNewRoom() {
+  async function handleCreateNewRoom() {
+    if(!user) {
+      await signInWithGoogle();
+    }
+
     navigate('rooms/new');
   }
 
